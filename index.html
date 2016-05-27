@@ -13,7 +13,8 @@
 	<link rel="stylesheet" href="dist/css/style.min.css">
 
 	<!-- Angular -->
-	<script src="assets/js/angular1.5.5.min.js"></script>
+	<script src="assets/js/angular-1.5.5.min.js"></script>
+	<script src="assets/js/angular-route-1.5.5.min.js"></script>
 	<script src="assets/js/accountand-app.js"></script>
 </head>
 <body>
@@ -35,11 +36,14 @@
 	<div class="content" ng-controller="MainCtrl">
 		<header>
 			<ul>
-				<li>&euro; 4.760,00</li>
+				<li>&euro; 4.575,00</li>
 				<li>&euro; 2.514,45</li>
 				<li>&euro; 2.245,55</li>
 			</ul>
 		</header>
+		
+		<div ng-view></div>
+
 	</div><!-- ./content -->
 
 

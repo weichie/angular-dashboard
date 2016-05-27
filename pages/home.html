@@ -1,0 +1,39 @@
+<section class="moneystream">
+	<div class="two-col">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-line-chart"></i>Inkomsten
+					<span class="pull-right">&euro; 4.575,00</span>
+				</h3>
+			</div><!-- ./panel-heading -->
+			<div class="panel-body">
+				<ul>
+					<li ng-repeat="rekening in inkomsten">
+						{{ rekening.factuur }}
+						<span class="pull-right">{{ rekening.bedrag }}</span>
+					</li>
+				</ul>
+				<form class="form-inline" ng-submit="addRekening()">
+					<input type="text" ng-model="factuur" class="form-control" placeholder="Factuur">
+					<input type="text" ng-model="bedrag" class="form-control" placeholder="Bedrag">
+					<button type="submit" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
+				</form>
+			</div><!-- .panel-body -->
+		</div><!-- ./pane -->
+	</div><!-- ./two-col -->
+
+	<div class="two-col">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-credit-card"></i>Kosten
+					<span class="pull-right">&euro; 2.514,45</span>
+				</h3>
+			</div><!-- ./panel-heading -->
+			<div class="panel-body">
+				Panel content
+			</div><!-- .panel-body -->
+		</div><!-- ./pane -->
+	</div><!-- ./two-col -->
+</section>

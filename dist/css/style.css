@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* VARIABLES 
 ======================== */
 /* MIXIN 
@@ -6,6 +7,10 @@
 ======================== */
 body {
   background: #e9f0f5;
+}
+
+.two-col {
+  width: 48%;
 }
 
 /* HEADER 
@@ -22,7 +27,8 @@ header ul {
   width: 50%;
 }
 header ul li {
-  padding: 15px 15px;
+  padding: 25px 15px;
+  font-size: 1.2em;
 }
 header ul li:first-child {
   color: #2eb398;
@@ -94,6 +100,42 @@ header ul li:nth-child(2) {
   position: relative;
   width: 80%;
   left: 20%;
+}
+
+.moneystream {
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.moneystream .panel .panel-heading i {
+  margin-right: 10px;
+}
+.moneystream .panel .panel-heading span {
+  font-weight: 300;
+}
+.moneystream ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.1em;
+}
+.moneystream ul li {
+  padding: 5px 0;
+  color: #89949b;
+}
+.moneystream ul li span {
+  font-style: italic;
+}
+.moneystream ul li span::before {
+  content: '€ ';
+}
+.moneystream form {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+.moneystream form .form-control {
+  border-radius: 0;
+  width: 45%;
 }
 
 /* Content
