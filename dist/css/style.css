@@ -78,10 +78,11 @@ header ul li:nth-child(2) {
 }
 .sidebar ul li a {
   display: block;
-  padding: 10px 15px;
+  padding: 15px 15px;
   border-left: 5px solid transparent;
   color: #89949b;
   text-decoration: none;
+  font-size: 1.1em;
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   -ms-transition: all 0.4s ease;
@@ -92,6 +93,10 @@ header ul li:nth-child(2) {
   margin-right: 10px;
 }
 .sidebar ul li a:hover {
+  background: #171d20;
+  border-left: 5px solid #70acb2;
+}
+.sidebar ul li a.active {
   background: #171d20;
   border-left: 5px solid #70acb2;
 }

@@ -23,7 +23,6 @@ $body-bg: 			#e9f0f5;
 		-ms-transition: all $x ease;
 		 -o-transition: all $x ease;
 			transition: all $x ease;
-
 }
 
 /* MAIN 
@@ -101,10 +100,11 @@ header{
 
 			a{
 				display: block;
-				padding: 10px 15px;
+				padding: 15px 15px;
 				border-left: 5px solid transparent;
 				color: $text-color;
 				text-decoration: none;
+				font-size: 1.1em;
 				@include transition(0.4s);
 
 				i{
@@ -115,6 +115,10 @@ header{
 					background: $dark-bg;
 					border-left: 5px solid $main-light;
 				}
+			}
+			a.active{
+				background: $dark-bg;
+				border-left: 5px solid $main-light;
 			}
 		}
 	}
