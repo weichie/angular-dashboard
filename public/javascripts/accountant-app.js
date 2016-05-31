@@ -4,7 +4,12 @@ app.config(function($routeProvider){
 	$routeProvider
 		.when('/', {
 			templateUrl: 'pages/home.html',
-			controller: 'MainCtrl'
+			controller: 'MainCtrl',
+			resolve: {
+				postPromise: ['inkomsten', function(inkomsten){
+					return inkomsten.getAll();
+				}]
+			}
 		});
 		/*
 		.when('/about', {
@@ -18,11 +23,23 @@ app.config(function($routeProvider){
 		*/
 });
 
-app.factory('verkopen', [function(){
+app.factory('verkopen', ['$http',function($http){
 	var o = {
 		inkomsten: []
 	};
 	return o;
+
+	o.getAll = function(){
+		return $http.get('/inkomsten').success(function(data){
+			angular.copy(data, o.inkomsten);
+		});
+	};
+
+	o.create = function(inkomst){
+		return $http.inkomst('/inkomsten', inkomst).success(function(data){
+			o.inkomsten.push(data);
+		});
+	};
 }]);
 
 app.factory('aankopen', [function(){
@@ -41,11 +58,16 @@ app.controller('MainCtrl', ['$scope', 'verkopen', 'aankopen', function($scope, v
 			return;
 		}
 
+		$scope.create({
+			factuur: $scope.factuur, 
+			bedrag: $scope.bedrag
+		});
+		/*
 		$scope.inkomsten.push({
 			factuur: $scope.factuur, 
 			bedrag: $scope.bedrag
 		});
-
+		*/
 		$scope.factuur = "";
 		$scope.bedrag = "";
 	};
