@@ -12,9 +12,9 @@
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 				<ul>
-					<li ng-repeat="rekening in inkomsten">
-						{{ rekening.factuur }}
-						<span class="pull-right">{{ rekening.bedrag }}</span>
+					<li ng-repeat="verkoop in inkomsten">
+						{{ verkoop.factuur }}
+						<span class="pull-right">{{ verkoop.bedrag }}</span>
 					</li>
 				</ul>
 				<form class="form-inline" ng-submit="addInkomsten()">

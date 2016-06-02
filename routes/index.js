@@ -1,46 +1,41 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Inkomst = mongoose.model('Inkomst');
-var Kost = mongoose.model('Kost');
+var Verkoop = mongoose.model('Verkoop');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/inkomsten', function(req,res,next){
-	Inkomst.find(function(err,inkomsten){
+router.get('/verkoop', function(req,res,next){
+	Verkoop.find(function(err,verkoop){
 		if(err){return next(err);}
 
-		res.json(inkomsten);
+		res.json(verkoop);
 	});
 });
 
-router.post('/inkomsten', function(req,res,next){
-	var inkomst = new Inkomst(req.body);
+router.post('/verkoop', function(req,res,next){
+	var verkoop = new Verkoop(req.body);
 
-	inkomst.save(function(err,inkomst){
-		if(err){return next(err);}
+	verkoop.save(function(err, question){
+		if(err){ return next(err);}
 
-		res.json(inkomst);
+		res.json(verkoop);
 	});
 });
 
-router.param('inkomst', function(req,res,next,id){
-	var query = Inkomst.findById(id);
+router.param('verkoop', function(req,res,next,id){
+	var query = Verkoop.findById(id);
 
-	query.exec(function(err, inkomst){
+	query.exec(function(err,question){
 		if(err){return next(err);}
-		if(!inkomst){return next(new Error('Can\'t find inkomst'));}
+		if(!verkoop){return next(new Error('Kan het verkoopfactuur niet vinden...')); }
 
-		req.inkomst = inkomst;
+		req.verkoop = verkoop;
 		return next();
 	});
-});
-
-router.get('/inkomsten/:inkomst', function(req,res){
-	res.json(req.inkomst);
 });
 
 module.exports = router;

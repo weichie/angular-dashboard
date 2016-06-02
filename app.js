@@ -4,16 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
+
+var mongoose = require('mongoose');
+require('./models/Verkopen');
+mongoose.connect('mongodb://localhost/dashboard');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var mongoose = require('mongoose');
-require('./models/Inkomsten');
-require('./models/Kosten');
-mongoose.connect('mongodb://localhost/dashboard');
-
 var app = express();
+var server = http.createServer(app);
+server.listen('3005', function(){
+  console.log("Web server listening on port 3005");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
