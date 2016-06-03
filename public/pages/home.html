@@ -6,15 +6,15 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-line-chart"></i>Verkoop facturen
-					<span class="pull-right">&euro; 4.575,00</span>
+					<i class="fa fa-line-chart"></i> Opbrengsten
+					<span class="pull-right">&euro; 1.760,00</span>
 				</h3>
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 				<ul>
-					<li ng-repeat="verkoop in inkomsten">
-						{{ verkoop.factuur }}
-						<span class="pull-right">{{ verkoop.bedrag }}</span>
+					<li ng-repeat="rekening in inkomsten | reverse | limitTo: 5">
+						{{ rekening.factuur }}
+						<span class="pull-right">{{ rekening.bedrag }}</span>
 					</li>
 				</ul>
 				<form class="form-inline" ng-submit="addInkomsten()">
@@ -30,15 +30,15 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-exchange"></i>Aankoop facturen
-					<span class="pull-right">&euro; 2.514,45</span>
+					<i class="fa fa-exchange"></i>Kosten
+					<span class="pull-right">&euro; 550,21</span>
 				</h3>
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 				<ul>
-					<li ng-repeat="rekening in kosten">
-						{{ rekening.rekening }}
-						<span class="pull-right">{{ rekening.kost }}</span>
+					<li ng-repeat="rekening in kosten | reverse | limitTo: 5">
+						{{ rekening.factuur }}
+						<span class="pull-right">{{ rekening.bedrag }}</span>
 					</li>
 				</ul>
 				<form class="form-inline" ng-submit="addKosten()">

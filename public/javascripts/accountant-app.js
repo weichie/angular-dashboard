@@ -1,5 +1,25 @@
 var app = angular.module('accountand-app', ['ngRoute']);
 
+app.config(function($routeProvider){
+	$routeProvider
+		.when('/', {
+			templateUrl: 'pages/home.html',
+			controller: 'MainCtrl',
+			resolve: {
+				postPromise: ['verkopen', 'kosten', function(verkopen, kosten){
+					return verkopen.getAll();
+					return kosten.getAll();
+				}]
+			}
+		});
+});
+
+app.filter('reverse', function() {
+	return function(items) {
+		return items.slice().reverse();
+	};
+});
+
 app.factory('verkopen', ['$http',function($http){
 	var o = {
 		inkomsten: []
@@ -7,7 +27,7 @@ app.factory('verkopen', ['$http',function($http){
 
 	o.getAll = function(){
 		return $http.get('/verkoop').success(function(data){
-			angular.copy(data, o.verkopen);
+			angular.copy(data, o.inkomsten);
 		});
 	};
 	o.get = function(id){
@@ -23,10 +43,35 @@ app.factory('verkopen', ['$http',function($http){
 
 	return o;
 }]);
+app.factory('kosten', ['$http', function($http){
+	var o = {
+		kosten: []
+	};
 
-app.controller('MainCtrl', ['$scope', 'verkopen', function($scope, verkopen){
+	o.getAll = function(){
+		return $http.get('/kost').success(function(data){
+			angular.copy(data, o.kosten);
+		});
+	};
+	o.get = function(id){
+		return $http.get('/kost/' + id).then(function(res){
+			return res.data;
+		});
+	};
+	o.create = function(kost){
+		return $http.post('/kost', kost).success(function(data){
+			o.kosten.push(data);
+		});
+	};
+
+	return o;
+}]);
+
+app.controller('MainCtrl', ['$scope', 'verkopen', 'kosten', function($scope, verkopen, kosten){
 	verkopen.getAll();
 	$scope.inkomsten = verkopen.inkomsten;
+	kosten.getAll();
+	$scope.kosten = kosten.kosten;
 
 	$scope.addInkomsten = function(){
 		if(!$scope.factuur || $scope.factuur == "" || !$scope.bedrag || $scope.bedrag == ""){
@@ -41,17 +86,18 @@ app.controller('MainCtrl', ['$scope', 'verkopen', function($scope, verkopen){
 		$scope.factuur = "";
 		$scope.bedrag = "";
 	};
+	$scope.addKosten = function(){
+		if(!$scope.rekening || $scope.rekening == "" || !$scope.kost || $scope.kost == ""){
+			return;
+		}
+
+		kosten.create({
+			factuur: $scope.rekening,
+			bedrag: $scope.kost
+		});
+
+		$scope.rekening = "";
+		$scope.kost = "";
+	}
 }]);
 
-app.config(function($routeProvider){
-	$routeProvider
-		.when('/', {
-			templateUrl: 'pages/home.html',
-			controller: 'MainCtrl',
-			resolve: {
-				postPromise: ['verkopen', function(verkopen){
-					return verkopen.getAll();
-				}]
-			}
-		});
-});
