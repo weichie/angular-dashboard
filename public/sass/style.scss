@@ -36,9 +36,28 @@ section{
 h1{
 	margin: 0;
 }
-.two-col{
-	width: 48%;
+.btn-red{
+	color: #fff;
+	background: $red;
+
+	&:hover{
+		color: #fff;
+		background: darken($red, 10%);
+	}
 }
+.btn-blue{
+	color: #fff;
+	background: $blue;
+
+	&:hover{
+		color: #fff;
+		background: darken($blue, 10%);
+	}
+}
+.two-col 			{width: 48%;}
+.modal input 		{border-radius: 0;}
+.modal textarea 	{border-radius: 0;}
+
 /* HEADER 
 ======================== */
 header{
@@ -174,9 +193,13 @@ header{
 		li{
 			padding: 5px 0;
 			color: $text-color;
-
+			
 			span{
 				font-style: italic;
+			}
+			.date{
+				font-size: 0.9em;
+				margin-right: 15px;
 			}
 		}
 	}
@@ -192,7 +215,7 @@ header{
 		}
 	}
 }
-.kosten-page{
+.single-page{
 	.panel{
 		border-radius: 0;
 		border-top: 3px solid $red;
@@ -301,6 +324,62 @@ header{
 		}
 	}
 }
+
+.kosten-page{
+	.panel{
+		border-top: 3px solid $red;
+	}
+	.panel-sidebar{
+		border-right: 3px solid $red;
+
+		.years h4{
+			border-bottom: 1px solid $red;
+		}
+		.months{
+			li{
+				a:hover{
+					background: $red;
+				}
+				.active{
+					background: $red;
+				}
+			}
+		}
+	}
+	.panel-content{
+		.date{
+			border-bottom: 1px solid lighten($red, 20%);
+		}
+	}
+}
+.inkomsten-page{
+	.panel{
+		border-top: 3px solid $blue;
+	}
+	.panel-sidebar{
+		border-right: 3px solid $blue;
+
+		.years h4{
+			border-bottom: 1px solid $blue;
+		}
+		.months{
+			li{
+				a:hover{
+					background: $blue;
+				}
+				.active{
+					background: $blue;
+				}
+			}
+		}
+	}
+	.panel-content{
+		.date{
+			border-bottom: 1px solid lighten($blue, 20%);
+		}
+	}
+}
+
 /* Content
 -------------------- */
 

@@ -1,7 +1,7 @@
-<section class="single-page kosten-page">
+<section class="single-page inkomsten-page">
 	<h1>
-		Overzicht Kosten
-		<a class="btn btn-default pull-right" data-toggle="modal" data-target="#kostenModal">
+		Overzicht Verkopen
+		<a class="btn btn-default pull-right" data-toggle="modal" data-target="#inkomstenModal">
 			<i class="fa fa-plus"></i>
 		</a>
 	</h1>	
@@ -118,18 +118,19 @@
 	</div><!-- ./panel -->
 </section>
 
-<!-- Kosten modal -->
-<div class="modal fade" tabindex="-1" id="kostenModal" role="dialog">
+<!-- Inkomsten modal -->
+<div class="modal fade" tabindex="-1" id="inkomstenModal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Kost toevoegen</h4>
+				<h4 class="modal-title">Inkomst toevoegen</h4>
 			</div>
 
-			<form class="form-horizontal" ng-submit="addKosten()">
+			<form class="form-horizontal" ng-submit="addInkomsten()">
+
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="datepicker" class="col-sm-2 control-label">Datum</label>
@@ -144,21 +145,27 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="winkel" class="col-sm-2 control-label">Schuldeiser</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="winkel" ng-model="winkel" placeholder="Winkel">
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="bedrag" class="col-sm-2 control-label">Bedrag</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="bedrag" ng-model="bedrag" placeholder="€ 0.00">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="Beschrijving" class="col-sm-2 control-label"># factuur</label>
+						<label for="factuur" class="col-sm-2 control-label">Factuur #</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Beschrijving" ng-model="factuur" placeholder="Factuur #">
+							<input type="text" class="form-control" id="factuur" ng-model="factuur" placeholder="factuur #">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="bedrijfsnaam" class="col-sm-2 control-label">Bedrijfsnaam</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="bedrijfsnaam" ng-model="bedrijfsnaam" placeholder="bedrijfsnaam">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="btw" class="col-sm-2 control-label">btw nummer</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="btw" ng-model="btw_nr" placeholder="#BTW">
 						</div>
 					</div>
 					<div class="form-group">
@@ -170,7 +177,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
-					<button type="submit" class="btn btn-red">Toevoegen</button>
+					<button type="submit" class="btn btn-blue">Toevoegen</button>
 				</div>
 			</form>
 		</div><!-- /.modal-content -->

@@ -5,6 +5,7 @@ app.config(function($routeProvider){
 		.when('/', {
 			templateUrl: 'pages/home.html',
 			controller: 'MainCtrl',
+			activetab: 'home',
 			resolve: {
 				postPromise: ['verkopen', 'kosten', function(verkopen, kosten){
 					return verkopen.getAll();
@@ -15,9 +16,20 @@ app.config(function($routeProvider){
 		.when('/kosten', {
 			templateUrl: 'pages/kosten.html',
 			controller: 'KostCtrl',
+			activetab: 'kosten',
 			resolve: {
 				postPromise: ['kosten', function(kosten){
 					return kosten.getAll();
+				}]
+			}
+		})
+		.when('/inkomsten', {
+			templateUrl: 'pages/inkomsten.html',
+			controller: 'VerkoopCtrl',
+			activetab: 'inkomsten',
+			resolve: {
+				postPromise: ['verkopen', function(verkopen){
+					return verkopen.getAll();
 				}]
 			}
 		})
@@ -124,35 +136,61 @@ app.controller('MainCtrl', ['$scope', 'verkopen', 'kosten', function($scope, ver
 		}
 		return total;
 	};
+}]);
+app.controller('SidebarCtrl', ['$scope', '$route', function($scope, $route){
+	$scope.$route = $route;
+}]);
+app.controller('KostCtrl', ['$scope', 'kosten', function($scope, kosten){
+	kosten.getAll();
+	$scope.kosten = kosten.kosten;
 
-	$scope.addInkomsten = function(){
-		if(!$scope.factuur || $scope.factuur == "" || !$scope.bedrag || $scope.bedrag == ""){
-			return;
-		}
-
-		verkopen.create({
-			factuur: $scope.factuur, 
-			bedrag: $scope.bedrag
-		});
-
-		$scope.factuur = "";
-		$scope.bedrag = "";
-	};
 	$scope.addKosten = function(){
-		if(!$scope.rekening || $scope.rekening == "" || !$scope.kost || $scope.kost == ""){
+		if(!$scope.title || $scope.title == "" || !$scope.bedrag || $scope.bedrag == ""){
 			return;
 		}
 
 		kosten.create({
-			factuur: $scope.rekening,
-			bedrag: $scope.kost
+			date: $scope.date,
+			title: $scope.title,
+			winkel: $scope.winkel,
+			bedrag: $scope.bedrag,
+			factuur: $scope.factuur,
+			beschrijving: $scope.extra
 		});
 
-		$scope.rekening = "";
-		$scope.kost = "";
+		$scope.date = "";
+		$scope.title = "";
+		$scope.winkel = "";
+		$scope.bedrag = "";
+		$scope.factuur = "";
+		$scope.extra = "";
 	};
 }]);
-app.controller('KostCtrl', ['$scope', 'kosten', function($scope, kosten){
+app.controller('VerkoopCtrl', ['$scope', 'verkopen', function($scope, verkopen){
+	verkopen.getAll();
+	$scope.inkomsten = verkopen.inkomsten;
 
+	$scope.addInkomsten = function(){
+		if(!$scope.title || $scope.title == "" || !$scope.bedrag || $scope.bedrag == ""){
+			return;
+		}
+
+		verkopen.create({
+			date: $scope.date,
+			title: $scope.title,
+			bedrag: $scope.bedrag,
+			factuur: $scope.factuur,
+			bedrijfsnaam: $scope.bedrijfsnaam,
+			btw_nr: $scope.btw_nr,
+			beschrijving: $scope.extra
+		});
+
+		$scope.date = "";
+		$scope.title = "";
+		$scope.bedrag = "";
+		$scope.factuur = "";
+		$scope.bedrijfsnaam = "";
+		$scope.btw_nr = "";
+		$scope.extra = "";
+	};
 }]);
-

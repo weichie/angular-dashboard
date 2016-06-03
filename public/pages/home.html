@@ -8,22 +8,18 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-line-chart"></i> Opbrengsten
+					<i class="fa fa-line-chart"></i> Recente Inkomsten
 					<span class="pull-right">{{ lastInkomsten() | currency : "€ " : 2 }}</span>
 				</h3>
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 				<ul>
-					<li ng-repeat="rekening in inkomsten | reverse | limitTo: 5">
-						{{ rekening.factuur }}
+					<li ng-repeat="rekening in inkomsten | orderBy: '-date' | limitTo: 5"><!-- | reverse | -->
+						<span class="date">{{ rekening.date | date: "dd/MM" }}</span>
+						{{ rekening.title }}
 						<span class="pull-right">{{ rekening.bedrag | currency : "€ " : 2 }}</span>
 					</li>
 				</ul>
-				<form class="form-inline" ng-submit="addInkomsten()">
-					<input type="text" ng-model="factuur" class="form-control" placeholder="Factuur">
-					<input type="text" ng-model="bedrag" class="form-control" placeholder="Bedrag">
-					<button type="submit" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
-				</form>
 			</div><!-- .panel-body -->
 		</div><!-- ./pane -->
 	</div><!-- ./two-col -->
@@ -32,22 +28,18 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-exchange"></i>Kosten
+					<i class="fa fa-exchange"></i>Recente Kosten
 					<span class="pull-right">{{ lastKosten() | currency : "€ " : 2 }}</span>
 				</h3>
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 				<ul>
-					<li ng-repeat="rekening in kosten | reverse | limitTo: 5">
-						{{ rekening.factuur }}
+					<li ng-repeat="rekening in kosten | orderBy: '-date' | limitTo: 5">
+						<span class="date">{{ rekening.date | date: "dd/MM" }}</span>
+						{{ rekening.title }}
 						<span class="pull-right">{{ rekening.bedrag | currency : "€ " : 2 }}</span>
 					</li>
 				</ul>
-				<form class="form-inline" ng-submit="addKosten()">
-					<input type="text" ng-model="rekening" class="form-control" placeholder="Rekening">
-					<input type="text" ng-model="kost" class="form-control" placeholder="Bedrag">
-					<button type="submit" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
-				</form>
 			</div><!-- .panel-body -->
 		</div><!-- ./pane -->
 	</div><!-- ./two-col -->

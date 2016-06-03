@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
 
 var KostSchema = new mongoose.Schema({
+	date: Date,
+	title: String,
+	winkel: String,
+	bedrag: Number,
 	factuur: String,
-	bedrag: Number
+	beschrijving: String
 });
 
 mongoose.model('Kost', KostSchema);

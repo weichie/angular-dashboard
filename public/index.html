@@ -18,7 +18,7 @@
 	<script src="/javascripts/accountant-app.js"></script>
 </head>
 <body>
-	<div class="sidebar">
+	<div class="sidebar" ng-controller="SidebarCtrl">
 		<div class="side-header">
 			<a href="#/home">
 				<img src="/imgs/logo.png">
@@ -27,9 +27,9 @@
 
 		<h4>menu</h4>
 		<ul>
-			<li><a href="#/" class="active"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-			<li><a href="#/kosten"><i class="fa fa-exchange"></i> Kosten</a></li>
-			<li><a href="#/verkopen"><i class="fa fa-line-chart"></i> Verkopen</a></li>
+			<li><a href="#/" ng-class="{active: $route.current.activetab == 'home'}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+			<li><a href="#/kosten" ng-class="{active: $route.current.activetab == 'kosten'}"><i class="fa fa-exchange"></i> Kosten</a></li>
+			<li><a href="#/inkomsten" ng-class="{active: $route.current.activetab == 'inkomsten'}"><i class="fa fa-line-chart"></i> Inkomsten</a></li>
 			<li><a href="#!"><i class="fa fa-folder-open-o"></i> Diversen</a></li>
 			<li><a href="#!"><i class="fa fa-gavel"></i> Belastingen</a></li>
 			<li><a href="#!"><i class="fa fa-user"></i> Persoonsbelasting</a></li>
@@ -56,7 +56,9 @@
 	</div><!-- ./content -->
 
 	<!-- Scriptzz -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="/javascripts/jquery-1.12.3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script src="/javascripts/bootstrap.min.js"></script>
 	<script src="/javascripts/custom.js"></script>
 </body>
