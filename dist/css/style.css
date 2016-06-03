@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* VARIABLES 
 ======================== */
 /* MIXIN 
@@ -152,9 +151,6 @@ header .docings ul li a:hover {
 .moneystream ul li span {
   font-style: italic;
 }
-.moneystream ul li span::before {
-  content: '€ ';
-}
 .moneystream form {
   margin-top: 25px;
   display: flex;
@@ -163,6 +159,10 @@ header .docings ul li a:hover {
 .moneystream form .form-control {
   border-radius: 0;
   width: 45%;
+}
+
+.kosten-page {
+  border: 1px solid #ff0000;
 }
 
 /* Content

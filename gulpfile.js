@@ -69,11 +69,11 @@ var gulp = require('gulp'),
     rename = require('gulp-rename');
 
 gulp.task('styles', function() {
-  return sass('assets/sass', { style: 'expanded' })
-    .pipe(gulp.dest('dist/css'))
+  return sass('public/sass', { style: 'expanded' })
+    .pipe(gulp.dest('public/stylesheets/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('public/stylesheets/'));
 });
 
 // Start the livereload server and watch files for change
@@ -84,7 +84,7 @@ gulp.task( 'watch', function() {
   gulp.watch( [ './js/**/*.js', '!./js/dist/*.js' ], [ 'scripts' ] )
 
   gulp.watch( './sass/**/*.scss', ['scss'] );
-  gulp.watch('assets/sass/*.scss', ['styles']);
+  gulp.watch('public/sass/*.scss', ['styles']);
 
 
 

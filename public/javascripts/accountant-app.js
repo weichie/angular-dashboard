@@ -11,6 +11,18 @@ app.config(function($routeProvider){
 					return kosten.getAll();
 				}]
 			}
+		})
+		.when('/kosten', {
+			templateUrl: 'pages/kosten.html',
+			controller: 'KostCtrl',
+			resolve: {
+				postPromise: ['kosten', function(kosten){
+					return kosten.getAll();
+				}]
+			}
+		})
+		.otherwise({
+			redirectTo: '/'
 		});
 });
 
@@ -73,6 +85,46 @@ app.controller('MainCtrl', ['$scope', 'verkopen', 'kosten', function($scope, ver
 	kosten.getAll();
 	$scope.kosten = kosten.kosten;
 
+	$scope.lastInkomsten = function(){
+		var laatsteInkomsten = $scope.inkomsten.length - 5;
+		var total = 0;
+		for(var i = 0; i < $scope.inkomsten.length; i++){
+			var rekening = $scope.inkomsten[i];
+			if( i >= laatsteInkomsten ){ 
+				total += (rekening.bedrag);
+			}
+		}
+		return total;
+	};
+	$scope.lastKosten = function(){
+		var laatsteKosten = $scope.kosten.length - 5;
+		var total = 0;
+		for(var i = 0; i < $scope.kosten.length; i++){
+			var rekening = $scope.kosten[i];
+			if( i >= laatsteKosten ){ 
+				total += (rekening.bedrag);
+			}
+		}
+		return total;
+	};
+
+	$scope.allInkomsten = function(){
+		var total = 0;
+		for(var i = 0; i < $scope.inkomsten.length; i++){
+			var rekening = $scope.inkomsten[i];
+			total += (rekening.bedrag);
+		}
+		return total;
+	};
+	$scope.allKosten = function(){
+		var total = 0;
+		for(var i = 0; i < $scope.kosten.length; i++){
+			var rekening = $scope.kosten[i];
+			total += (rekening.bedrag);
+		}
+		return total;
+	};
+
 	$scope.addInkomsten = function(){
 		if(!$scope.factuur || $scope.factuur == "" || !$scope.bedrag || $scope.bedrag == ""){
 			return;
@@ -98,6 +150,9 @@ app.controller('MainCtrl', ['$scope', 'verkopen', 'kosten', function($scope, ver
 
 		$scope.rekening = "";
 		$scope.kost = "";
-	}
+	};
+}]);
+app.controller('KostCtrl', ['$scope', 'kosten', function($scope, kosten){
+
 }]);
 

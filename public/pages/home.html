@@ -1,20 +1,22 @@
+<!-- 
 <section class="">
-	<!-- Grafiek inkomsten / kosten per maand -->
+	Grafiek inkomsten / kosten per maand
 </section>
+-->
 <section class="moneystream">
 	<div class="two-col">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
 					<i class="fa fa-line-chart"></i> Opbrengsten
-					<span class="pull-right">&euro; 1.760,00</span>
+					<span class="pull-right">{{ lastInkomsten() | currency : "€ " : 2 }}</span>
 				</h3>
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 				<ul>
 					<li ng-repeat="rekening in inkomsten | reverse | limitTo: 5">
 						{{ rekening.factuur }}
-						<span class="pull-right">{{ rekening.bedrag }}</span>
+						<span class="pull-right">{{ rekening.bedrag | currency : "€ " : 2 }}</span>
 					</li>
 				</ul>
 				<form class="form-inline" ng-submit="addInkomsten()">
@@ -31,14 +33,14 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">
 					<i class="fa fa-exchange"></i>Kosten
-					<span class="pull-right">&euro; 550,21</span>
+					<span class="pull-right">{{ lastKosten() | currency : "€ " : 2 }}</span>
 				</h3>
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 				<ul>
 					<li ng-repeat="rekening in kosten | reverse | limitTo: 5">
 						{{ rekening.factuur }}
-						<span class="pull-right">{{ rekening.bedrag }}</span>
+						<span class="pull-right">{{ rekening.bedrag | currency : "€ " : 2 }}</span>
 					</li>
 				</ul>
 				<form class="form-inline" ng-submit="addKosten()">

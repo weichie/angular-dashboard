@@ -30,6 +30,12 @@ $body-bg: 			#e9f0f5;
 body{
 	background: $body-bg;
 }
+section{
+	padding: 50px;
+}
+h1{
+	margin: 0;
+}
 .two-col{
 	width: 48%;
 }
@@ -151,7 +157,6 @@ header{
 	left: 20%;
 }
 .moneystream{
-	padding: 50px;
 	display: flex;
 	justify-content: space-between;
 
@@ -172,10 +177,6 @@ header{
 
 			span{
 				font-style: italic;
-
-				&::before{
-					content: '€ ';
-				}
 			}
 		}
 	}
@@ -191,7 +192,115 @@ header{
 		}
 	}
 }
+.kosten-page{
+	.panel{
+		border-radius: 0;
+		border-top: 3px solid $red;
+		margin-top: 20px;
+		
+		.panel-body{
+			padding: 0;
+			height: 600px;
+			display: flex;
+		}
+	}
+	.panel-sidebar{
+		border-right: 3px solid $red;
+		width: 20%;
 
+		ul{
+			list-style-type: none;
+			padding: 0;
+		}
+
+		.years{			
+			h4{
+				padding: 5px 10px;
+				margin-top: 10;
+				margin-bottom: 0;
+				border-bottom: 1px solid $red;
+			}
+		}
+		.months{
+			li{
+				border: none;
+
+				a{
+					padding: 8px 10px;
+					display: block;
+					color: #333;
+					text-decoration: none;
+					@include transition(.2s);
+
+					&:hover{
+						color: #fff;
+						background: $red;
+					}
+				}
+				.active{
+					color: #fff;
+					background: $red;
+				}
+			}
+		}
+	}
+	.panel-content{
+		font-size: 1.1em;
+		width: 80%;
+		overflow: scroll;
+
+		.date{
+			margin-top: 5px;
+			margin-right: 10px;
+			margin-bottom: 20px;
+			margin-left: 10px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid lighten($red, 20%);
+
+			ul{
+				list-style-type: none;
+				margin-bottom: 5px;
+				padding-top: 5px;
+				padding-right: 10px;
+				padding-left: 10px;
+
+				li{
+					padding-bottom: 10px;
+					margin-bottom: 10px;
+
+					border-bottom: 1px solid lighten($text-color, 35%);
+					display: flex;
+
+					.info{
+						color: $text-color;
+						width: 80%;
+
+						strong{
+							margin-bottom: 5px;
+							display: block;
+
+							span{
+								font-weight: 300;
+							}
+						}
+						p{
+							margin: 0;
+							font-weight: 300;
+						}
+					}
+					.price{
+						width: 20%;
+						text-align: right;
+					}
+
+					&:last-child{
+						border: none;
+					}
+				}
+			}
+		}
+	}
+}
 /* Content
 -------------------- */
 

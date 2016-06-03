@@ -27,9 +27,9 @@
 
 		<h4>menu</h4>
 		<ul>
-			<li><a href="#!" class="active"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-			<li><a href="#!"><i class="fa fa-exchange"></i> Aankopen</a></li>
-			<li><a href="#!"><i class="fa fa-line-chart"></i> Verkopen</a></li>
+			<li><a href="#/" class="active"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+			<li><a href="#/kosten"><i class="fa fa-exchange"></i> Kosten</a></li>
+			<li><a href="#/verkopen"><i class="fa fa-line-chart"></i> Verkopen</a></li>
 			<li><a href="#!"><i class="fa fa-folder-open-o"></i> Diversen</a></li>
 			<li><a href="#!"><i class="fa fa-gavel"></i> Belastingen</a></li>
 			<li><a href="#!"><i class="fa fa-user"></i> Persoonsbelasting</a></li>
@@ -37,16 +37,16 @@
 		</ul>
 	</div><!-- ./sidebar -->
 
-	<div class="content" ng-controller="MainCtrl">
-		<header>
+	<div class="content">
+		<header ng-controller="MainCtrl">
 			<ul>
-				<li>&euro; 1.760,00</li>
-				<li>&euro; 550,21</li>
-				<li>&euro; 1.209,79</li>
+				<li>{{ allInkomsten() | currency : "€ " : 2 }}</li>
+				<li>{{ allKosten() | currency : "€ " : 2 }}</li>
+				<li>{{ allInkomsten() - allKosten() | currency : "€ " : 2 }}</li>
 			</ul>
 			<div class="docings">
 				<ul>
-					<li><a href="#!">Documenten</a></li>
+					<li><a href="#">Documenten</a></li>
 				</ul>
 			</div>
 		</header>
@@ -54,7 +54,6 @@
 		<div ng-view></div>
 
 	</div><!-- ./content -->
-
 
 	<!-- Scriptzz -->
 	<script src="/javascripts/jquery-1.12.3.min.js"></script>
