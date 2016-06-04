@@ -38,81 +38,23 @@
 				<div class="date">
 					<strong>January 14, 2016</strong>
 					<ul>
-						<li>
+						<li ng-repeat="rekening in inkomsten | orderBy: '-date'">
 							<div class="info">
-								<strong>Visitekaartjes <span>Makro, Factuur: 2341726</span></strong>
+								<strong>
+									<span class="datum">{{ rekening.date | date: "dd/MM/yyyy"}}</span>
+									{{ rekening.title }} 
+								</strong>
+								<span>{{ rekening.bedrijfsnaam }}, Factuur #{{ rekening.factuur }}</span>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus animi, soluta tempore dolorum cupiditate aliquid sed totam nam reprehenderit autem esse iusto debitis quisquam, quam possimus sit voluptate tempora.
+									{{ rekening.beschrijving }}
 								</p>
 							</div><!-- ./info -->
 							<div class="price">
-								&euro; 20,20
-							</div><!-- ./price -->
-						</li>
-						<li>
-							<div class="info">
-								<strong>Visitekaartjes <span>Makro, Factuur: 2341726</span></strong>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus animi, soluta tempore dolorum cupiditate aliquid sed totam nam reprehenderit autem esse iusto debitis quisquam, quam possimus sit voluptate tempora.
-								</p>
-							</div><!-- ./info -->
-							<div class="price">
-								&euro; 20,20
-							</div><!-- ./price -->
-						</li>
-						<li>
-							<div class="info">
-								<strong>Visitekaartjes <span>Makro, Factuur: 2341726</span></strong>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus animi, soluta tempore dolorum cupiditate aliquid sed totam nam reprehenderit autem esse iusto debitis quisquam, quam possimus sit voluptate tempora.
-								</p>
-							</div><!-- ./info -->
-							<div class="price">
-								&euro; 20,20
+								{{ rekening.bedrag | currency : "€ " : 2 }}
 							</div><!-- ./price -->
 						</li>
 					</ul>
 				</div><!-- ./date -->
-
-				<div class="date">
-					<strong>January 12, 2016</strong>
-					<ul>
-						<li>
-							<div class="info">
-								<strong>Visitekaartjes <span>Makro, Factuur: 2341726</span></strong>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus animi, soluta tempore dolorum cupiditate aliquid sed totam nam reprehenderit autem esse iusto debitis quisquam, quam possimus sit voluptate tempora.
-								</p>
-							</div><!-- ./info -->
-							<div class="price">
-								&euro; 20,20
-							</div><!-- ./price -->
-						</li>
-						<li>
-							<div class="info">
-								<strong>Visitekaartjes <span>Makro, Factuur: 2341726</span></strong>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus animi, soluta tempore dolorum cupiditate aliquid sed totam nam reprehenderit autem esse iusto debitis quisquam, quam possimus sit voluptate tempora.
-								</p>
-							</div><!-- ./info -->
-							<div class="price">
-								&euro; 20,20
-							</div><!-- ./price -->
-						</li>
-						<li>
-							<div class="info">
-								<strong>Visitekaartjes <span>Makro, Factuur: 2341726</span></strong>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus animi, soluta tempore dolorum cupiditate aliquid sed totam nam reprehenderit autem esse iusto debitis quisquam, quam possimus sit voluptate tempora.
-								</p>
-							</div><!-- ./info -->
-							<div class="price">
-								&euro; 20,20
-							</div><!-- ./price -->
-						</li>
-					</ul>
-				</div><!-- ./date -->
-
 			</div><!-- ./panel-content -->
 		</div>
 	</div><!-- ./panel -->
