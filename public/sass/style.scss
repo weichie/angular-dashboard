@@ -382,6 +382,40 @@ header{
 	}
 }
 
+.docs{
+	h1 			{margin-bottom: 10px;}
+	p 			{color: $text-color;}
+	
+	table{
+
+		a 		{color: $blue;}
+
+		th:first-child,
+		td:first-child{
+			width: 100px;
+		}
+		th:nth-child(2),
+		td:nth-child(2){
+			width: 200px;
+		}
+		th:last-child,
+		td:last-child{
+			text-align: right;
+			width: 150px;
+		}
+		form{
+			.inputfile{
+				width: 0.1px;
+				height: 0.1px;
+				opacity: 0;
+				overflow: hidden;
+				position: absolute;
+				z-index: -1;
+			}
+		}
+	}
+}
+
 /* Content
 -------------------- */
 

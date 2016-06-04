@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var VerkoopSchema = new mongoose.Schema({
-	date: Date,
+	date: {type: Date, default: Date.now },
 	title: String,
 	bedrag: Number,
 	factuur: Number,

@@ -328,6 +328,37 @@ header .docings ul li a:hover {
   border-bottom: 1px solid #a8c8cb;
 }
 
+.docs h1 {
+  margin-bottom: 10px;
+}
+.docs p {
+  color: #89949b;
+}
+.docs table a {
+  color: #68a0a5;
+}
+.docs table th:first-child,
+.docs table td:first-child {
+  width: 100px;
+}
+.docs table th:nth-child(2),
+.docs table td:nth-child(2) {
+  width: 200px;
+}
+.docs table th:last-child,
+.docs table td:last-child {
+  text-align: right;
+  width: 150px;
+}
+.docs table form .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 /* Content
 -------------------- */
 /* FOOTER 

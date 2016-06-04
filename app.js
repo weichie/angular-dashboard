@@ -9,6 +9,7 @@ var http = require('http');
 var mongoose = require('mongoose');
 require('./models/Verkopen');
 require('./models/Kosten');
+require('./models/Diversen');
 mongoose.connect('mongodb://localhost/dashboard');
 
 var routes = require('./routes/index');

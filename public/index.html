@@ -15,6 +15,8 @@
 	<!-- Angular -->
 	<script src="/javascripts/angular-1.5.5.min.js"></script>
 	<script src="/javascripts/angular-route-1.5.5.min.js"></script>
+	<script src="/javascripts/ng-file-upload-shim.min.js"></script>
+	<script src="/javascripts/ng-file-upload.min.js"></script>
 	<script src="/javascripts/accountant-app.js"></script>
 </head>
 <body>
@@ -27,10 +29,26 @@
 
 		<h4>menu</h4>
 		<ul>
-			<li><a href="#/" ng-class="{active: $route.current.activetab == 'home'}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-			<li><a href="#/kosten" ng-class="{active: $route.current.activetab == 'kosten'}"><i class="fa fa-exchange"></i> Kosten</a></li>
-			<li><a href="#/inkomsten" ng-class="{active: $route.current.activetab == 'inkomsten'}"><i class="fa fa-line-chart"></i> Inkomsten</a></li>
-			<li><a href="#!"><i class="fa fa-folder-open-o"></i> Diversen</a></li>
+			<li>
+				<a href="#/" ng-class="{active: $route.current.activetab == 'home'}">
+					<i class="fa fa-tachometer"></i> Dashboard
+				</a>
+			</li>
+			<li>
+				<a href="#/kosten" ng-class="{active: $route.current.activetab == 'kosten'}">
+					<i class="fa fa-exchange"></i> Kosten
+				</a>
+			</li>
+			<li>
+				<a href="#/inkomsten" ng-class="{active: $route.current.activetab == 'inkomsten'}">
+					<i class="fa fa-line-chart"></i> Inkomsten
+				</a>
+			</li>
+			<li>
+				<a href="#/diversen" ng-class="{active: $route.current.activetab == 'diversen'}">
+					<i class="fa fa-folder-open-o"></i> Diversen
+				</a>
+			</li>
 			<li><a href="#!"><i class="fa fa-gavel"></i> Belastingen</a></li>
 			<li><a href="#!"><i class="fa fa-user"></i> Persoonsbelasting</a></li>
 			<li><a href="#!"><i class="fa fa-money"></i> Investeringen</a></li>

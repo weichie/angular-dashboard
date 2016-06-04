@@ -1,0 +1,80 @@
+<section class="docs diversen">
+	<h1>
+		Diversen
+		<a class="btn btn-default pull-right" data-toggle="modal" data-target="#diversModal">
+			<i class="fa fa-plus"></i>
+		</a>
+	</h1>	
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="panel-content">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Title</th>
+							<th>Info</th>
+							<th>link</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in diversen | orderBy: '-date'">
+							<td><p>{{item.date | date: "dd/MM/yyyy"}}</p></td>
+							<td>{{ item.title }} </td>
+							<td><p>{{ item.info }}</p></td>
+							<td><a href="#!">Bekijk document</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!-- ./panel-content -->
+		</div>
+	</div><!-- ./panel -->
+</section>
+
+<!-- Inkomsten modal -->
+<div class="modal fade" tabindex="-1" id="diversModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Diverse documenten toevoegen</h4>
+			</div>
+
+			<form class="form-horizontal" ng-submit="addDiversen()">
+
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="datepicker" class="col-sm-2 control-label">Datum</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="datepicker" ng-model="date" placeholder="2016-03-05">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="title" class="col-sm-2 control-label">Titel</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="title" ng-model="title" placeholder="Titel">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="info" class="col-sm-2 control-label">info</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" rows="5" id="info" ng-model="info" placeholder="Extra info"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Upload</label>
+						<div class="col-sm-10">
+							<input type="file" class="inputfile" ng-model="bestand" id="input">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+					<button type="submit" class="btn btn-blue">Toevoegen</button>
+				</div>
+			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

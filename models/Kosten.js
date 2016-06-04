@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var KostSchema = new mongoose.Schema({
-	date: Date,
+	date: {type: Date, default: Date.now },
 	title: String,
 	winkel: String,
 	bedrag: Number,
