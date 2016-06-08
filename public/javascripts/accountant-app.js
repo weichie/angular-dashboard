@@ -125,6 +125,7 @@ app.factory('diversen', ['$http', function($http){
 }]);
 
 app.controller('SidebarCtrl', ['$scope', '$route', function($scope, $route){
+
 	$scope.$route = $route;
 }]);
 app.controller('MainCtrl', ['$scope', 'verkopen', 'kosten', function($scope, verkopen, kosten){
@@ -227,12 +228,25 @@ app.controller('VerkoopCtrl', ['$scope', 'verkopen', function($scope, verkopen){
 		$scope.extra = "";
 	};
 }]);
-
-app.controller('DiversCtrl', ['$scope', 'Upload', 'diversen', '$timeout', function($scope, Upload, diversen, $timeout){
+app.controller('DiversCtrl', ['$scope', '$upload', 'diversen', function($scope, $upload, diversen){
 	diversen.getAll();
 	$scope.diversen = diversen.diversen;
 
 	$scope.addDiversen = function(){
+		$scope.fileSelected = function(files){
+			if(files && files.length){
+				$scope.file = files[0];
+			}
+
+			$upload.upload({
+				url: '/upload', //nodejs route
+				file: $scope.file
+			})
+			.success(function(data){
+				console.log(data, ' uploaded');
+			});
+		};
+
 		if(!$scope.title || $scope.title == ""){
 			return;
 		}
@@ -248,24 +262,5 @@ app.controller('DiversCtrl', ['$scope', 'Upload', 'diversen', '$timeout', functi
 		$scope.title = "";
 		$scope.info = "";
 	};
-	/*
-	$scope.uploadPic = function(file) {
-		file.upload = Upload.upload({
-			url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-			data: {username: $scope.username, file: file},
-		});
 
-		file.upload.then(function (response) {
-			$timeout(function () {
-				file.result = response.data;
-			});
-		}, function (response) {
-			if (response.status > 0)
-			$scope.errorMsg = response.status + ': ' + response.data;
-		}, function (evt) {
-			// Math.min is to fix IE which reports 200% sometimes
-			file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-		});
-	}
-	*/
 }]);

@@ -381,7 +381,6 @@ header{
 		}
 	}
 }
-
 .docs{
 	h1 			{margin-bottom: 10px;}
 	p 			{color: $text-color;}
@@ -441,16 +440,17 @@ header{
 	background: $blue;
 	opacity: 1;
 	transition: opacity 2s ease;
+
+	.pace-progress {
+		position: absolute;
+		right: 100%;
+		width: 100%;
+		height: 5px;
+		background: #fff;
+		color: transparent;
+	}
 }
 
-.pace .pace-progress {
-	position: absolute;
-	right: 100%;
-	width: 100%;
-	height: 10px;
-	background: #fff;
-	color: transparent;
-}
 .pace-activity{
 	position: relative;
 	height: 100%;
@@ -566,7 +566,7 @@ header{
 .pace .pace-progress[data-progress-text="99%"]:after { right: -15.86px }
 .pace .pace-progress[data-progress-text="100%"]:after { right: -14px }
 
-.pace.pace-inactive 	{
+.pace.pace-inactive {
 	/* display: none; */
 	opacity: 0;
 }

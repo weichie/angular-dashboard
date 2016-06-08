@@ -87,7 +87,7 @@ router.param('divers', function(req,res,next,id){
 
 	query.exec(function(err,question){
 		if(err){return next(err);}
-		if(!kost){return next(new Error('Kan formulier diversen niet vinden...')); }
+		if(!divers){return next(new Error('Kan formulier diversen niet vinden...')); }
 
 		req.divers = divers;
 		return next();
